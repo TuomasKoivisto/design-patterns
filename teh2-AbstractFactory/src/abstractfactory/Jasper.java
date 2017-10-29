@@ -8,24 +8,17 @@ public class Jasper {
     Kengät kengät = null;
     AbstractFactory factory = null;
     
-    public void pueAdidasVaatteet() {
+    public Jasper(AbstractFactory factory) {
+        this.factory = factory;
+    }
+    
+    public void pueVaatteet() {
         System.out.println("Puen päälleni farmarit, t-paidan, lippiksen ja kengät.");
-        factory = new AdidasFactory();
         farmarit = factory.luoFarmarit();
         tpaita = factory.luoPaita();
         lippis = factory.luoLippis();
         kengät = factory.luoKengät();
     }
-    
-    
-    public void pueBossVaatteet() {
-        System.out.println("Puen päälleni farmarit, t-paidan, lippiksen ja kengät");
-        factory = new BossFactory();
-        farmarit = factory.luoFarmarit();
-        tpaita = factory.luoPaita();
-        lippis = factory.luoLippis();
-        kengät = factory.luoKengät();
-    } 
     
     public void esitteleVaatteet() {
         System.out.println("Minulla on päälläni " + toString());

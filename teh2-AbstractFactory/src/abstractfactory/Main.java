@@ -20,10 +20,12 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Jasper jasper = new Jasper();
-        jasper.pueAdidasVaatteet();
+        Jasper jasper = new Jasper(new AdidasFactory());
+        jasper.pueVaatteet();
         jasper.esitteleVaatteet();
-        jasper.pueBossVaatteet();
+        
+        jasper = new Jasper(new BossFactory());
+        jasper.pueVaatteet();
         jasper.esitteleVaatteet();
     }
     
