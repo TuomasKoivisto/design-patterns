@@ -17,24 +17,28 @@ public class Arvauspeli extends Game{
     int vuoro = 0;
     double number;
     int voittaja;
+    boolean loppu;
 
     public Arvauspeli() {
         this.scanner = new Scanner(System.in);
+        loppu = false;
     }
 
     @Override
     void initializeGame() {
         double number = 10 * Math.random();
         System.out.println("Arvaa luku välillä 0 - 10. \n Jos luku on +/- 1 generoidusta luvusta, voitat pelin");
+        loppu = false;
+        vuoro = 0;
     }
 
     @Override
     void makePlay(int player) {
-        System.out.println(player + "n arvaus: ");
+        System.out.println("pelaajan " + player + " arvaus: ");
         double arvaus = scanner.nextDouble();
         if (arvaus >= number - 1 && arvaus <= number + 1) {
             voittaja = player;
-            endOfGame();
+            loppu = true;
         }
         if (player == playersCount) {
             vuoro++;
@@ -43,7 +47,11 @@ public class Arvauspeli extends Game{
 
     @Override
     boolean endOfGame() {
-        return false;
+        boolean tulos = false;
+        if (loppu == true) {
+            tulos = loppu;
+        }
+        return tulos;
     }
 
     @Override
